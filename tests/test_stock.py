@@ -1,7 +1,7 @@
-import pytest
-import os
 from dotenv import load_dotenv
 from src.PartsBoxAPI.PartsBoxAPI import PartsBoxAPI
+import pytest
+import os
 
 load_dotenv()
 

@@ -25,16 +25,21 @@ class BaseAPI:
         :return: Parsed JSON response.
         """
         url = f"{self.BASE_URL}{endpoint}"
+        
+        payload = {k.replace("_", "/"): v for k, v in kwargs.items() if v is not None}
 
         # Enforce rate limiting
         with self._lock:
             current_time = time.time()
             elapsed_time = current_time - self._last_request_time
-            if elapsed_time < 1 / self.RATE_LIMIT:
+            if (elapsed_time < 1 / self.RATE_LIMIT):
                 time.sleep((1 / self.RATE_LIMIT) - elapsed_time)
             self._last_request_time = time.time()
 
-        logger.info(f"Sending request to {url} with payload: {kwargs}")
-        response = self.session.post(url, json=kwargs)
+        logger.info(f"Sending request to {url} with payload: {payload}")
+        response = self.session.post(url, json=payload)
         response.raise_for_status()
+        logger.debug(f"Payload sent to {url}: {payload}")
+        logger.debug(f"Response status code: {response.status_code}")
+        logger.debug(f"Response content: {response.text}")
         return response.json()

@@ -25,6 +25,10 @@ If it's checked, that means that the function has been implemented and has tests
 - [ ] [`part/get`](https://partsbox.com/api.html#part-get)
 - [ ] [`part/all`](https://partsbox.com/api.html#part-all)
 - [ ] [`part/create`](https://partsbox.com/api.html#part-create)
+  - [x] `part/create` - Local part
+  - [x] `part/create` - Meta part
+  - [ ] `part/create` - Linked part - Not possible as of yet via API *(You will need to create a local part first then use the UI to link it manually.)*
+  - [ ] `part/create` - Sub-assembly
 - [ ] [`part/update`](https://partsbox.com/api.html#part-update)
 - [ ] [`part/delete`](https://partsbox.com/api.html#part-delete)
 - [ ] [`part/add-meta-part-ids`](https://partsbox.com/api.html#part-add-meta-part-ids)

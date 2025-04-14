@@ -28,7 +28,7 @@ class PartsAPI(BaseAPI):
         """
         Create a new part in the PartsBox system.
 
-        :param part_type: The type of the part (e.g., "local", "meta").
+        :param part_type: The type of the part "sub-assembly", "meta", "linked", "local".
         :param part_name: The name of the part.
         :param part_description: Optional description of the part.
         :param part_notes: Optional notes for the part.
