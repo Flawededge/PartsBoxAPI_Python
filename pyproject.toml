@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "PartsBoxAPI"
+version = "0.1.0"
+description = "A Python client library for the PartsBox API."
+authors = [
+    { name = "Chris Diggle", email = "crdiggle@gmail.com" }
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+requires-python = ">=3.7"
+dependencies = [
+    "requests",
+    "python-dotenv",
+    "loguru"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
