@@ -93,7 +93,7 @@ class ProjectsAPI(BaseAPI):
         response = self._send_request("/project/update-entries", project_id=project_id, entries=entries)
         return response
 
-    def delete_project_entries(self, project_id: str, entry_ids: list) -> dict:
+    def delete_project_entries(self, project_id: str, ids: list) -> dict:
         """
         Delete entries from a specific project.
 
@@ -101,7 +101,7 @@ class ProjectsAPI(BaseAPI):
         :param entry_ids: A list of entry IDs to delete.
         :return: A dictionary containing the status of the operation.
         """
-        response = self._send_request("/project/delete-entries", project_id=project_id, entry_ids=entry_ids)
+        response = self._send_request("/project/delete-entries", project_id=project_id, ids=ids)
         return response
 
     def get_project_builds(self, project_id: str) -> list:

@@ -4,7 +4,6 @@ from loguru import logger
 
 ENV_FILE: str = ".env"
 
-
 def set_api_key() -> None:
     """
     Prompt the user for an API key and save it in a .env file.

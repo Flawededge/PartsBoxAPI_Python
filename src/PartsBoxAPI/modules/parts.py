@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 from .base import BaseAPI
 
 class PartsAPI(BaseAPI):
@@ -24,7 +24,7 @@ class PartsAPI(BaseAPI):
         response = self._send_request("/part/get", part_id=part_id)
         return response
 
-    def create_part(self, part_type: str, part_name: str, part_description: Optional[str] = None, part_notes: Optional[str] = None, part_tags: Optional[list] = None, part_footprint: Optional[str] = None, part_attrition: Optional[dict] = None, part_low_stock: Optional[dict] = None) -> dict:
+    def create_part(self, part_type: str, part_name: str, part_description: Optional[str] = None, part_notes: Optional[str] = None, part_tags: Optional[list] = None, part_footprint: Optional[str] = None, part_attrition: Optional[dict] = None, part_low_stock: Optional[dict] = None, part_cad_key: Optional[list[str]] = None) -> dict:
         """
         Create a new part in the PartsBox system.
 
@@ -36,12 +36,22 @@ class PartsAPI(BaseAPI):
         :param part_footprint: Optional footprint of the part.
         :param part_attrition: Optional attrition details for the part.
         :param part_low_stock: Optional low stock threshold for the part.
+        :param part_cad_key: Optional CAD key for the part.
         :return: A dictionary containing the newly created part's details.
         """
-        response = self._send_request("/part/create", part_type=part_type, part_name=part_name, part_description=part_description, part_notes=part_notes, part_tags=part_tags, part_footprint=part_footprint, part_attrition=part_attrition, part_low_stock=part_low_stock)
+        response = self._send_request("/part/create", part_type=part_type, part_name=part_name, part_description=part_description, part_notes=part_notes, part_tags=part_tags, part_footprint=part_footprint, part_attrition=part_attrition, part_low_stock=part_low_stock, part_cad_key=part_cad_key)
         return response
 
-    def update_part(self, part_id: str, part_name: Optional[str] = None, part_description: Optional[str] = None, part_notes: Optional[str] = None, part_tags: Optional[list] = None, part_footprint: Optional[str] = None, part_attrition: Optional[dict] = None, part_low_stock: Optional[dict] = None) -> dict:
+    def update_part(self,
+                    part_id: str,
+                    part_name: Optional[str] = None,
+                    part_description: Optional[str] = None,
+                    part_notes: Optional[str] = None,
+                    part_tags: Optional[list] = None,
+                    part_footprint: Optional[str] = None,
+                    part_attrition: Optional[dict] = None,
+                    part_low_stock: Optional[dict] = None,
+                    part_cad_key: Optional[list[str]] = None) -> dict:
         """
         Update details of an existing part.
 
@@ -53,9 +63,10 @@ class PartsAPI(BaseAPI):
         :param part_footprint: Optional new footprint for the part.
         :param part_attrition: Optional new attrition details for the part.
         :param part_low_stock: Optional new low stock threshold for the part.
+        :param part_cad_key: Optional new CAD key for the part.
         :return: A dictionary containing the updated part's details.
         """
-        response = self._send_request("/part/update", part_id=part_id, part_name=part_name, part_description=part_description, part_notes=part_notes, part_tags=part_tags, part_footprint=part_footprint, part_attrition=part_attrition, part_low_stock=part_low_stock)
+        response = self._send_request("/part/update", part_id=part_id, part_name=part_name, part_description=part_description, part_notes=part_notes, part_tags=part_tags, part_footprint=part_footprint, part_attrition=part_attrition, part_low_stock=part_low_stock, part_cad_key=part_cad_key)
         return response
 
     def delete_part(self, part_id: str) -> dict:
